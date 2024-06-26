@@ -8,21 +8,23 @@ import org.playwright.pages.DemoPage;
 import com.microsoft.playwright.Page;
 
 
-public class Modules extends UtilityClass{
-	Page page;
-	DemoPage searchPage;
-	Map<String, Object> data;
+public class Modules extends UtilityClass {
 
-	public Modules(Map<String, Object> data, Page page) {
-		this.searchPage = new DemoPage(page);
-		this.data = data;
-	}
+    DemoPage searchPage;
+    Map<String, Object> data;
 
-	public void testClickFunctionality() {
-		searchPage.clickCheckBox();
-		System.out.println(searchPage.getUserNames());
-		searchPage.clickAllUserNames();
-	}
-	
-	
+    public Modules(Map<String, Object> data, Page page) {
+        this.searchPage = new DemoPage(page);
+        this.data = data;
+    }
+
+    public void testClickFunctionality() {
+        searchPage.clickLogin();
+        searchPage.clickEmailRadioButton();
+        searchPage.sendEmail(data.get("emailId").toString());
+        searchPage.sendpassword(data.get("password").toString());
+        searchPage.clickSignInButton();
+    }
+
+
 }
